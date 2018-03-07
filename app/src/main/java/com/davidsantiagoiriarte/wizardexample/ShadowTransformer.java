@@ -2,24 +2,26 @@ package com.davidsantiagoiriarte.wizardexample;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 
 
 public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPager.PageTransformer {
 
-    private ViewPager mViewPager;
+    private CustomViewpager mViewPager;
     private CardAdapter mAdapter;
     private float mLastOffset;
     private boolean mScalingEnabled;
+    private CustomScrollView mScrollView;
 
-    private int measuredWidth;
-
-    public ShadowTransformer(ViewPager viewPager, CardAdapter adapter) {
+    public ShadowTransformer(CustomViewpager viewPager, CustomScrollView scrollView, CardAdapter adapter) {
         mViewPager = viewPager;
         viewPager.addOnPageChangeListener(this);
         mAdapter = adapter;
-        measuredWidth = mViewPager.getMeasuredWidth();
+        mScrollView = scrollView;
     }
 
     public void enableScaling(boolean enable) {
@@ -108,6 +110,17 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
 
     @Override
     public void onPageSelected(int position) {
+        CardView card = mAdapter.getCardViewAt(position);
+        Display display = mViewPager.getDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics ();
+        display.getMetrics(outMetrics);
+
+        float density  = mViewPager.getResources().getDisplayMetrics().density;
+        float displayH = outMetrics.heightPixels / density;
+        float cardH = card.getHeight() / density;
+        if(displayH>cardH) mScrollView.setScrollingEnabled(false);
+        else mScrollView.setScrollingEnabled(true);
+
     }
 
     @Override

@@ -19,11 +19,12 @@ class MainActivity : AppCompatActivity() {
 
         mFragmentCardAdapter = CardFragmentPagerAdapter(supportFragmentManager,
                 dpToPixels(2, this))
-        mFragmentCardShadowTransformer = ShadowTransformer(viewPager, mFragmentCardAdapter)
+        mFragmentCardShadowTransformer = ShadowTransformer(viewPager,mainScroll, mFragmentCardAdapter)
         viewPager.adapter = mFragmentCardAdapter
         viewPager.setPageTransformer(false, mFragmentCardShadowTransformer)
         viewPager.offscreenPageLimit = 3
         mFragmentCardShadowTransformer!!.enableScaling(false)
+
 
     }
 

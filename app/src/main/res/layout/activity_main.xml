@@ -8,11 +8,11 @@
     android:fitsSystemWindows="true"
     tools:context="com.davidsantiagoiriarte.wizardexample.MainActivity">
 
-    <ScrollView
+    <com.davidsantiagoiriarte.wizardexample.CustomScrollView
+        android:id="@+id/mainScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="top"
-        android:background="@color/colorAccent">
+        android:layout_gravity="top">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,12 +22,11 @@
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="800dp"
-                android:background="@android:color/holo_blue_dark"
                 android:clipToPadding="false"
                 android:overScrollMode="ifContentScrolls"
                 android:paddingLeft="@dimen/card_padding"
                 android:paddingRight="@dimen/card_padding" />
         </LinearLayout>
-    </ScrollView>
+    </com.davidsantiagoiriarte.wizardexample.CustomScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,74 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    app:cardUseCompatPadding="true">
+    android:layout_gravity="center">
 
-
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_bright"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="24dp">
+        app:cardUseCompatPadding="true">
 
-        <ImageView
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:src="@drawable/ic_person" />
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/rootLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="Let’s get your provider dempgraphics"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="In this section we’ll collect:" />
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:src="@drawable/ic_person" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="30dp"
-            android:text="• Your basic info" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Let’s get your provider dempgraphics"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginStart="48dp"
-            android:gravity="center_horizontal"
-            android:text="• Your drivers license information" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="In this section we’ll collect:" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginStart="48dp"
-            android:gravity="center_horizontal"
-            android:text="• One emergency contact" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="30dp"
+                android:text="• Your basic info" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:background="@color/colorAccent"
-            android:text="continue"
-            android:textColor="@android:color/white" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginStart="48dp"
+                android:gravity="center_horizontal"
+                android:text="• Your drivers license information" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginStart="48dp"
+                android:gravity="center_horizontal"
+                android:text="• One emergency contact" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:background="@color/colorAccent"
+                android:text="continue"
+                android:textColor="@android:color/white" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
-
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+</FrameLayout>

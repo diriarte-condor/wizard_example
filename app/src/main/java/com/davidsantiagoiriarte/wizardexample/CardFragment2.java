@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 
 public class CardFragment2 extends CardFragment {
@@ -23,7 +24,6 @@ public class CardFragment2 extends CardFragment {
                 * CardAdapter.MAX_ELEVATION_FACTOR);
         return view;
     }
-
     public CardView getCardView() {
         return mCardView;
     }

@@ -12,6 +12,8 @@ import android.view.View;
  */
 
 public class CustomViewpager extends ViewPager{
+    private CardFragmentPagerAdapter mAdapter;
+
     public CustomViewpager(@NonNull Context context) {
         super(context);
     }
@@ -23,17 +25,15 @@ public class CustomViewpager extends ViewPager{
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
+        mAdapter = (CardFragmentPagerAdapter) this.getAdapter();
         int height = 0;
-        for(int i = 0; i < getChildCount(); i++) {
-            View child = getChildAt(i);
-            child.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-            int h = child.getMeasuredHeight();
-            if(h > height ) height = h;
+        View v = mAdapter.getCurrentItem();
+        if(v != null) {
+            v.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+            height = v.getMeasuredHeight();
         }
 
-        if (height != 0) {
-            heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
-        }
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }

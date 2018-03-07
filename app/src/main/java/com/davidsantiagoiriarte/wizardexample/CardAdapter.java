@@ -3,6 +3,7 @@ package com.davidsantiagoiriarte.wizardexample;
 
 import android.support.v7.widget.CardView;
 
+
 public interface CardAdapter {
 
     int MAX_ELEVATION_FACTOR = 8;
@@ -10,6 +11,5 @@ public interface CardAdapter {
     float getBaseElevation();
 
     CardView getCardViewAt(int position);
-
     int getCount();
 }

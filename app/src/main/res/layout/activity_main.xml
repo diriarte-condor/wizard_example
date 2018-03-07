@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context="com.davidsantiagoiriarte.wizardexample.MainActivity">
 
-    <com.davidsantiagoiriarte.wizardexample.CustomScrollView
+    <ScrollView
         android:id="@+id/mainScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,6 +27,6 @@
                 android:paddingLeft="@dimen/card_padding"
                 android:paddingRight="@dimen/card_padding" />
         </LinearLayout>
-    </com.davidsantiagoiriarte.wizardexample.CustomScrollView>
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

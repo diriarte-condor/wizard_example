@@ -2,12 +2,16 @@ package com.davidsantiagoiriarte.wizardexample;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.widget.CardView;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implements CardAdapter {
 
@@ -19,12 +23,13 @@ public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implemen
         mFragments = new ArrayList<>();
         mBaseElevation = baseElevation;
 
-        for(int i = 0; i< 5; i++){
-            if(i%2==0)
-            addCardFragment(new CardFragment());
+        for (int i = 0; i < 5; i++) {
+            if (i % 2 == 0)
+                addCardFragment(new CardFragment());
             else
                 addCardFragment(new CardFragment2());
         }
+
     }
 
     @Override
@@ -57,5 +62,18 @@ public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implemen
     public void addCardFragment(CardFragment fragment) {
         mFragments.add(fragment);
     }
+
+    private View mCurrentView;
+
+    // Saving current active item
+    @Override
+    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+        mCurrentView = ((CardFragment) object).getCardView();
+    }
+
+    public View getCurrentItem() {
+        return mCurrentView;
+    }
+
 
 }

@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 
 public class CardFragment2 extends CardFragment {
 
-    private CardView mCardView;
 
     @Nullable
     @Override
@@ -23,8 +22,5 @@ public class CardFragment2 extends CardFragment {
         mCardView.setMaxCardElevation(mCardView.getCardElevation()
                 * CardAdapter.MAX_ELEVATION_FACTOR);
         return view;
-    }
-    public CardView getCardView() {
-        return mCardView;
     }
 }

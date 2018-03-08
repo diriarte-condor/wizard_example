@@ -26,6 +26,8 @@ public class CustomViewpager extends ViewPager{
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
         mAdapter = (CardFragmentPagerAdapter) this.getAdapter();
+
+
         int height = 0;
         View v = mAdapter.getCurrentItem();
         if(v != null) {
@@ -34,9 +36,10 @@ public class CustomViewpager extends ViewPager{
         }
 
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
-
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
+
+
 
 
 

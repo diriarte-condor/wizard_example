@@ -24,8 +24,7 @@ class MainActivity : AppCompatActivity() {
         viewPager.setPageTransformer(false, mFragmentCardShadowTransformer)
         viewPager.offscreenPageLimit = 3
         mFragmentCardShadowTransformer.enableScaling(false)
-
-
+        viewPager.pageMargin = -40
     }
 
 

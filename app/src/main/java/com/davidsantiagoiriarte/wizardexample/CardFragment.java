@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 public class CardFragment extends Fragment {
 
-    private CardView mCardView;
+    CardView mCardView;
 
     @Nullable
     @Override

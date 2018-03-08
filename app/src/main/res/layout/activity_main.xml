@@ -21,7 +21,7 @@
             <com.davidsantiagoiriarte.wizardexample.CustomViewpager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="800dp"
+                android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:overScrollMode="ifContentScrolls"
                 android:paddingLeft="@dimen/card_padding"

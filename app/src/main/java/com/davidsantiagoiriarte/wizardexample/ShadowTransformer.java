@@ -15,9 +15,9 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
     private CustomViewpager mViewPager;
     private CardAdapter mAdapter;
     private float mLastOffset;
-    private ScrollView mScrollView;
+    private CustomScrollView mScrollView;
 
-    public ShadowTransformer(CustomViewpager viewPager, ScrollView scrollView, CardAdapter adapter) {
+    public ShadowTransformer(CustomViewpager viewPager, CustomScrollView scrollView, CardAdapter adapter) {
         mViewPager = viewPager;
         viewPager.addOnPageChangeListener(this);
         mAdapter = adapter;
@@ -81,11 +81,20 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
 
     @Override
     public void onPageSelected(int position) {
+        CardView card = mAdapter.getCardViewAt(position);
+        Display display = mViewPager.getDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics ();
+        display.getMetrics(outMetrics);
+
+        float density  = mViewPager.getResources().getDisplayMetrics().density;
+        float displayH = outMetrics.heightPixels / density;
+        float cardH = card.getHeight() / density;
+        if(displayH>cardH) mScrollView.setScrollingEnabled(false);
+        else mScrollView.setScrollingEnabled(true);
+
         mScrollView.smoothScrollTo(0, 0);
     }
 
     @Override
-    public void onPageScrollStateChanged(int state) {
-        mViewPager.requestLayout();
-    }
+    public void onPageScrollStateChanged(int state) {}
 }

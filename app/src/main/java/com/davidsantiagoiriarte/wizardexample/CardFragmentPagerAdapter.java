@@ -23,12 +23,10 @@ public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implemen
         mFragments = new ArrayList<>();
         mBaseElevation = baseElevation;
 
-        for (int i = 0; i < 5; i++) {
-            if (i % 2 == 0)
+        for (int i = 0; i < 3; i++)
                 addCardFragment(new CardFragment());
-            else
-                addCardFragment(new CardFragment2());
-        }
+
+        for (int i = 0; i < 5; i++) addCardFragment(new CardFragment2());
 
     }
 
@@ -61,18 +59,6 @@ public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implemen
 
     public void addCardFragment(CardFragment fragment) {
         mFragments.add(fragment);
-    }
-
-    private View mCurrentView;
-
-    // Saving current active item
-    @Override
-    public void setPrimaryItem(ViewGroup container, int position, Object object) {
-        mCurrentView = ((CardFragment) object).getCardView();
-    }
-
-    public View getCurrentItem() {
-        return mCurrentView;
     }
 
 

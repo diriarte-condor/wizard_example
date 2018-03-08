@@ -15,7 +15,6 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
     private CustomViewpager mViewPager;
     private CardAdapter mAdapter;
     private float mLastOffset;
-    private boolean mScalingEnabled;
     private ScrollView mScrollView;
 
     public ShadowTransformer(CustomViewpager viewPager, ScrollView scrollView, CardAdapter adapter) {
@@ -23,26 +22,6 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
         viewPager.addOnPageChangeListener(this);
         mAdapter = adapter;
         mScrollView = scrollView;
-    }
-
-    public void enableScaling(boolean enable) {
-        if (mScalingEnabled && !enable) {
-            // shrink main card
-            CardView currentCard = mAdapter.getCardViewAt(mViewPager.getCurrentItem());
-            if (currentCard != null) {
-                currentCard.animate().scaleY(1);
-                currentCard.animate().scaleX(1);
-            }
-        } else if (!mScalingEnabled && enable) {
-            // grow main card
-            CardView currentCard = mAdapter.getCardViewAt(mViewPager.getCurrentItem());
-            if (currentCard != null) {
-                currentCard.animate().scaleY(1.1f);
-                currentCard.animate().scaleX(1.1f);
-            }
-        }
-
-        mScalingEnabled = enable;
     }
 
     @Override
@@ -81,10 +60,7 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
         // This might be null if a fragment is being used
         // and the views weren't created yet
         if (currentCard != null) {
-            if (mScalingEnabled) {
-                currentCard.setScaleX((float) (1 + 0.1 * (1 - realOffset)));
-                currentCard.setScaleY((float) (1 + 0.1 * (1 - realOffset)));
-            }
+
             currentCard.setCardElevation((baseElevation + baseElevation
                     * (CardAdapter.MAX_ELEVATION_FACTOR - 1) * (1 - realOffset)));
         }
@@ -94,16 +70,12 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
         // We might be scrolling fast enough so that the next (or previous) card
         // was already destroyed or a fragment might not have been created yet
         if (nextCard != null) {
-            if (mScalingEnabled) {
-                nextCard.setScaleX((float) (1 + 0.1 * (realOffset)));
-                nextCard.setScaleY((float) (1 + 0.1 * (realOffset)));
-            }
+
             nextCard.setCardElevation((baseElevation + baseElevation
                     * (CardAdapter.MAX_ELEVATION_FACTOR - 1) * (realOffset)));
         }
 
         mLastOffset = positionOffset;
-
 
     }
 
